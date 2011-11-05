@@ -1,0 +1,33 @@
+If you're using Puppet you already have a list of the hosts and types of hosts under your control. So why duplication this information in your capistrano configuration?
+Every time you provision or destroy a new machine you have to remember to update your deployment configuration and that's just an error waiting to happen.
+
+This requires you to be running my web-puppet service to get at the relevant host and tag information. https://github.com/garethr/web-puppet
+
+A sample capistrano configuration might look like the following. The only important parts are the require, creating a new server instance and the calls to get_servers to return a list of hosts.
+
+    require 'capistrano-puppet'
+
+    web_puppet = CapistranoPuppet::Server.new('http://localhost:9295')
+
+    set :application, "test"
+    set :repository, "."
+    set :scm, :none
+    set :deploy_via, :copy
+
+    default_run_options[:pty] = true
+    set :deploy_to, '/server/path/'
+    set :user, 'deploy'
+    set :use_sudo, false
+
+    role :web do
+      web_puppet.get_servers('webserver')
+    end
+
+    role :web do
+      web_puppet.get_servers('appserver')
+    end
+
+
+Note that this is the first release as is really just a proof of concept. Running web-puppet in environments with lots of hosts will likely be very slow. And currently if you're using the HTTP auth built into web-puppet this client can't yet authenticate.
+
+The code was inspired by Capistrano-cobbler, which uses Cobbler rather than web-puppet to get the host information. https://github.com/proffalken/capistrano-cobbler

@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Gareth Rushgrove"]
   s.email       = ["gareth@morethanseven.net"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{"Use puppet to provide hosts for capistrano"}
+  s.description = %q{"Connects to the web-puppet webservice and allows puppet hosts and classes to be used to determine hosts for capistrano"}
 
   s.rubyforge_project = "capistrano-puppet"
 
