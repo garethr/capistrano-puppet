@@ -23,7 +23,7 @@ A sample capistrano configuration might look like the following. The only import
       web_puppet.get_servers('webserver')
     end
 
-    role :web do
+    role :app do
       web_puppet.get_servers('appserver')
     end
 
