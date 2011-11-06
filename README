@@ -1,5 +1,4 @@
-If you're using Puppet you already have a list of the hosts and types of hosts under your control. So why duplication this information in your capistrano configuration?
-Every time you provision or destroy a new machine you have to remember to update your deployment configuration and that's just an error waiting to happen.
+If you're using Puppet you already have a list of the hosts and types of hosts under your control. So why duplicate this information in your capistrano configuration? Every time you provision or destroy a new machine you have to remember to update your deployment configuration and that's just an error waiting to happen.
 
 This requires you to be running my web-puppet service to get at the relevant host and tag information. https://github.com/garethr/web-puppet
 
@@ -30,4 +29,4 @@ A sample capistrano configuration might look like the following. The only import
 
 Note that this is the first release as is really just a proof of concept. Running web-puppet in environments with lots of hosts will likely be very slow.
 
-The code was inspired by Capistrano-cobbler, which uses Cobbler rather than web-puppet to get the host information. https://github.com/proffalken/capistrano-cobbler
+The code was inspired by capistrano-cobbler, which uses Cobbler rather than web-puppet to get the host information. https://github.com/proffalken/capistrano-cobbler
