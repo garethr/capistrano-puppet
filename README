@@ -7,7 +7,7 @@ A sample capistrano configuration might look like the following. The only import
 
     require 'capistrano-puppet'
 
-    web_puppet = CapistranoPuppet::Server.new('http://localhost:9295')
+    web_puppet = CapistranoPuppet::Server.new('http://username:password@localhost:9295')
 
     set :application, "test"
     set :repository, "."
@@ -28,6 +28,6 @@ A sample capistrano configuration might look like the following. The only import
     end
 
 
-Note that this is the first release as is really just a proof of concept. Running web-puppet in environments with lots of hosts will likely be very slow. And currently if you're using the HTTP auth built into web-puppet this client can't yet authenticate.
+Note that this is the first release as is really just a proof of concept. Running web-puppet in environments with lots of hosts will likely be very slow.
 
 The code was inspired by Capistrano-cobbler, which uses Cobbler rather than web-puppet to get the host information. https://github.com/proffalken/capistrano-cobbler
