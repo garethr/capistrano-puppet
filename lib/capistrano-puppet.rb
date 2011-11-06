@@ -1,5 +1,5 @@
 require "capistrano-puppet/version"
-require 'open-uri'
+require 'rest_client'
 require 'json'
 
 module CapistranoPuppet
@@ -10,7 +10,7 @@ module CapistranoPuppet
 
     def initialize(puppet_web)
       @puppet_web = puppet_web
-      contents = URI.parse(@puppet_web).read
+      contents = RestClient.get(@puppet_web).to_s
       @json = JSON.parse(contents)
     end
 
